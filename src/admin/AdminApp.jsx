@@ -71,6 +71,7 @@ function Dashboard({ session }) {
 
 export default function AdminApp() {
   const [session, setSession] = useState(undefined)
+  useEffect(() => { document.documentElement.classList.remove('site-dark') }, [])
   useEffect(() => {
     auth.getSession().then(setSession)
     return auth.onChange(setSession)

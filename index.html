@@ -6,7 +6,11 @@
     <!-- SEO: edite estes textos com o seu nome e a URL final do site -->
     <title>Helena Duarte — Chef de cozinha</title>
     <meta name="description" content="Cozinha autoral brasileira, feita com tempo, técnica e ingredientes de estação. Portfólio, menus e eventos." />
-    <meta name="theme-color" content="#FAF8F5" />
+    <meta name="theme-color" content="#121110" />
+    <script>
+      // Site público em modo escuro; o painel /admin continua claro.
+      if (!location.pathname.startsWith('/admin')) document.documentElement.classList.add('site-dark')
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <!-- Pré-visualização ao compartilhar (WhatsApp, Instagram, Facebook) -->

@@ -11,6 +11,9 @@
   --accent-ink: #2C4431;    /* texto sobre fundo claro de destaque */
   --accent-light: #9CBDA0;  /* destaque sobre fundo escuro */
   --danger: #B3261E;
+  --placeholder: #ECE7E0;   /* fundo das fotos enquanto carregam */
+  --contact-bg: #1C1A17;    /* seção de contato e rodapé */
+  --contact-ink: #FAF8F5;
   --radius: 4px;
   --wrap: 1440px;
   --gutter: clamp(16px, 4vw, 48px);
@@ -55,6 +58,27 @@ input, textarea, select { font: inherit; color: inherit; }
   .tile img, .lb-figure img { transition: none !important; }
 }
 
+/* =========================================================== MODO ESCURO (site público)
+   A classe .site-dark é aplicada ao <html> nas páginas públicas (veja index.html).
+   O painel /admin continua claro. */
+html.site-dark {
+  color-scheme: dark;
+  --bg: #121110;
+  --surface: #1A1917;
+  --ink: #EEEAE4;
+  --ink-2: #BDB6AD;
+  --muted: #8C857C;
+  --line: #2B2926;
+  --accent: #8DB394;
+  --accent-soft: #1E2A21;
+  --accent-ink: #B7D3BB;
+  --accent-light: #9CBDA0;
+  --placeholder: #1F1D1B;
+  --contact-bg: #0C0B0A;
+  --contact-ink: #EEEAE4;
+}
+html.site-dark .contact { border-top: 1px solid var(--line); }
+
 /* =========================================================== HEADER */
 .site-header {
   position: sticky; top: 0; z-index: 20;
@@ -94,8 +118,8 @@ input, textarea, select { font: inherit; color: inherit; }
 .masonry { display: flex; gap: clamp(8px, 1.2vw, 16px); align-items: flex-start; }
 .masonry-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: clamp(8px, 1.2vw, 16px); }
 .tile { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; position: relative; }
-.tile-media { position: relative; overflow: hidden; background: #ECE7E0; border-radius: var(--radius); }
-.tile-media.failed { background: linear-gradient(135deg, #E9DDD3, #D8C4B6); }
+.tile-media { position: relative; overflow: hidden; background: var(--placeholder); border-radius: var(--radius); }
+.tile-media.failed { background: var(--placeholder); }
 .tile-media img {
   width: 100%; height: 100%; object-fit: cover; opacity: 0;
   transform: scale(1.02); transition: opacity .7s var(--ease), transform 1.1s var(--ease);
@@ -155,7 +179,7 @@ input, textarea, select { font: inherit; color: inherit; }
   .about-grid { grid-template-columns: 5fr 6fr; align-items: start; }
   .about-photo { position: sticky; top: 90px; }
 }
-.about-photo { overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 5; background: #ECE7E0; }
+.about-photo { overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 5; background: var(--placeholder); }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 @media (hover: hover) { .about-photo:hover img { transform: scale(1.03); } }
 .about-text { max-width: 620px; }
@@ -171,7 +195,7 @@ input, textarea, select { font: inherit; color: inherit; }
 .chips li { padding: 7px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); font-size: 14px; font-weight: 500; }
 
 /* =========================================================== CONTATO */
-.contact { padding: clamp(60px, 10vw, 140px) 0; background: var(--ink); color: var(--bg); }
+.contact { padding: clamp(60px, 10vw, 140px) 0; background: var(--contact-bg); color: var(--contact-ink); }
 .contact .eyebrow { color: var(--accent-light); }
 .contact-list { display: grid; gap: 12px; grid-template-columns: 1fr; max-width: 760px; }
 @media (min-width: 640px) { .contact-list { grid-template-columns: 1fr 1fr; } }
@@ -189,12 +213,12 @@ input, textarea, select { font: inherit; color: inherit; }
   width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%;
   border: 1px solid rgba(250,248,245,.2); transition: all .3s var(--ease);
 }
-.socials a:hover { background: var(--bg); color: var(--ink); border-color: var(--bg); }
+.socials a:hover { background: var(--contact-ink); color: var(--contact-bg); border-color: var(--contact-ink); }
 
-.site-footer { background: var(--ink); color: rgba(250,248,245,.5); font-size: 13px; }
+.site-footer { background: var(--contact-bg); color: rgba(250,248,245,.5); font-size: 13px; }
 .footer-inner { display: flex; justify-content: space-between; gap: 16px; padding-top: 22px; padding-bottom: 28px; border-top: 1px solid rgba(250,248,245,.1); }
 .footer-inner a { text-decoration: none; }
-.footer-inner a:hover { color: var(--bg); }
+.footer-inner a:hover { color: var(--contact-ink); }
 
 /* =========================================================== ADMIN */
 .btn {

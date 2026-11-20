@@ -140,6 +140,11 @@ export default function PublicSite() {
   const { data, error } = useSiteData({ refetchOnFocus: true })
 
   useEffect(() => {
+    document.documentElement.classList.add('site-dark')
+    return () => document.documentElement.classList.remove('site-dark')
+  }, [])
+
+  useEffect(() => {
     if (!data) return
     const { name, role, tagline } = data.settings
     if (name) document.title = `${name}${role ? ` — ${role}` : ''}`
