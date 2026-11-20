@@ -3,7 +3,7 @@
 -- Para recomeçar do zero: delete from photos; delete from categories;
 -- =====================================================================
 
-insert into public.settings (id, name, role, tagline, about_title, about_html, about_photo_url, about_photo_path, education, experience, specialties, email, whatsapp, instagram, facebook, tiktok, youtube, linkedin, website) values (1, 'Helena Duarte', 'Chef de cozinha', 'Cozinha autoral brasileira, feita com tempo, técnica e ingredientes de estação.', 'Cozinhar é contar histórias com o que a terra oferece.', '<p>Cresci entre panelas de barro na cozinha da minha avó, em Minas Gerais, e foi ali que aprendi que comida boa começa muito antes do fogão: começa no <strong>respeito ao ingrediente</strong>.</p><p>Depois de anos trabalhando em restaurantes no Brasil e na Europa, voltei para criar uma cozinha <em>autoral, afetiva e contemporânea</em>, que une técnicas clássicas a sabores brasileiros.</p><p>Hoje assino menus para eventos, jantares privados e consultorias para restaurantes.</p>', 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80', null, 'Gastronomia — Universidade Anhembi Morumbi (2012)
+insert into public.settings (id, name, role, tagline, about_title, about_html, about_photo_url, about_photo_path, education, experience, specialties, email, whatsapp, instagram, facebook, tiktok, youtube, linkedin, website) values (1, 'Antônia Ferreira', 'Chef de cozinha', 'Cozinha autoral brasileira, feita com tempo, técnica e ingredientes de estação.', 'Cozinhar é contar histórias com o que a terra oferece.', '<p>Cresci entre panelas de barro na cozinha da minha avó, em Minas Gerais, e foi ali que aprendi que comida boa começa muito antes do fogão: começa no <strong>respeito ao ingrediente</strong>.</p><p>Depois de anos trabalhando em restaurantes no Brasil e na Europa, voltei para criar uma cozinha <em>autoral, afetiva e contemporânea</em>, que une técnicas clássicas a sabores brasileiros.</p><p>Hoje assino menus para eventos, jantares privados e consultorias para restaurantes.</p>', 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80', null, 'Gastronomia — Universidade Anhembi Morumbi (2012)
 Cuisine et Pâtisserie — Le Cordon Bleu, Paris (2014)
 Curso de Fermentação Natural — Lisboa (2018)', 'Subchef — Restaurante Mesa Viva, São Paulo (2015–2018)
 Chef de partie — Maison Laurent, Lyon (2018–2020)
@@ -12,7 +12,7 @@ Chef independente e consultora (desde 2024)', 'Menus degustação
 Cozinha mineira contemporânea
 Fermentação
 Confeitaria de estação
-Jantares privados', 'contato@helenaduarte.com.br', '5511999999999', 'https://instagram.com/', '', '', '', 'https://linkedin.com/', '')
+Jantares privados', 'contato@antoniaferreira.com.br', '5511999999999', 'https://instagram.com/', '', '', '', 'https://linkedin.com/', '')
 on conflict (id) do nothing;
 
 insert into public.categories (id, name, position) values

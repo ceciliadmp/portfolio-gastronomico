@@ -34,7 +34,7 @@ export const seedPhotos = [
 
 export const seedSettings = {
   id: 1,
-  name: 'Helena Duarte',
+  name: 'Antônia Ferreira',
   role: 'Chef de cozinha',
   tagline: 'Cozinha autoral brasileira, feita com tempo, técnica e ingredientes de estação.',
   about_title: 'Cozinhar é contar histórias com o que a terra oferece.',
@@ -47,7 +47,7 @@ export const seedSettings = {
   education: 'Gastronomia — Universidade Anhembi Morumbi (2012)\nCuisine et Pâtisserie — Le Cordon Bleu, Paris (2014)\nCurso de Fermentação Natural — Lisboa (2018)',
   experience: 'Subchef — Restaurante Mesa Viva, São Paulo (2015–2018)\nChef de partie — Maison Laurent, Lyon (2018–2020)\nChef executiva — Casa Tempero, Belo Horizonte (2020–2024)\nChef independente e consultora (desde 2024)',
   specialties: 'Menus degustação\nCozinha mineira contemporânea\nFermentação\nConfeitaria de estação\nJantares privados',
-  email: 'contato@helenaduarte.com.br',
+  email: 'contato@antoniaferreira.com.br',
   whatsapp: '5511999999999',
   instagram: 'https://instagram.com/',
   facebook: '',
