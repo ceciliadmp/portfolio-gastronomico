@@ -36,13 +36,15 @@ Abra http://localhost:5173 (site) e http://localhost:5173/admin (painel).
 | O quê | Onde |
 |---|---|
 | Nome, frase, fotos, categorias, sobre mim, contatos | No painel `/admin` |
-| Texto do link compartilhado (WhatsApp/Instagram) | `index.html` — tags `<title>`, `description` e `og:*` |
+| Texto do link compartilhado (WhatsApp/Instagram) | Vem do painel (Cabeçalho) a cada publicação. Depois de alterar, faça *Redeploy* na Vercel |
 | Imagem de pré-visualização do link | Substitua `public/og-image.jpg` (1200×630 px) — idealmente sua melhor foto |
 | Cor de destaque e fonte | `src/styles.css`, no topo (`--accent`, `--font`) |
 | Conteúdo de exemplo | `src/lib/seed.js` |
 
-Observação: o WhatsApp e o Instagram leem a pré-visualização direto do `index.html` (não executam o site),
-por isso esses textos ficam fixos ali e não no painel.
+Observação: o WhatsApp e o Instagram leem a pré-visualização direto do `index.html` (não executam o site).
+Por isso, na publicação, o site busca nome, profissão e frase no Supabase e grava no `index.html`
+(veja `vite.config.js`). Ao mudar esses textos no painel, faça um *Redeploy* na Vercel para a pré-visualização acompanhar.
+O WhatsApp também guarda pré-visualizações antigas por um tempo: para testar, compartilhe o link com `?v=2` no final.
 
 ## Como funciona
 

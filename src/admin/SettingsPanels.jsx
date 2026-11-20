@@ -43,9 +43,13 @@ export function HeaderPanel({ data, setData }) {
         <label>Seu nome<input {...bind('name')} /></label>
         <label>Profissão <span className="muted small">(aparece pequena, acima da frase)</span><input {...bind('role')} placeholder="Chef de cozinha" /></label>
         <label>Frase de apresentação<textarea rows={3} maxLength={180} {...bind('tagline')} />
-          <span className="muted small">Curta e direta — até 180 caracteres. Também é usada como descrição do link compartilhado.</span>
+          <span className="muted small">Curta e direta — até 180 caracteres.</span>
         </label>
       </div>
+      <p className="note">
+        <b>Pré-visualização do link (WhatsApp, Instagram, Google):</b> nome, profissão e frase entram nela na
+        próxima publicação do site. Depois de alterar, abra a Vercel → <i>Deployments</i> → ⋯ → <i>Redeploy</i>.
+      </p>
       <SaveBar busy={busy} dirty={dirty} />
     </form>
   )
