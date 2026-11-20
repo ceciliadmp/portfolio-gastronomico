@@ -97,6 +97,45 @@ function Contact({ s }) {
   )
 }
 
+const SECTIONS = [['portfolio', 'Portfólio'], ['sobre', 'Sobre'], ['contato', 'Contato']]
+
+// Coluna fixa à esquerda (telas largas): nome, profissão, frase e menu.
+function Sidebar({ s }) {
+  const [active, setActive] = useState('portfolio')
+  useEffect(() => {
+    const els = SECTIONS.map(([id]) => document.getElementById(id)).filter(Boolean)
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: '-45% 0px -50% 0px' }
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+  const socials = socialList.filter((x) => s[x.key])
+  return (
+    <aside className="sidebar">
+      <a href="#portfolio" className="sidebar-name">{s.name}</a>
+      {s.role && <p className="eyebrow">{s.role}</p>}
+      {s.tagline && <h1 className="sidebar-tagline">{s.tagline}</h1>}
+      <nav className="sidebar-nav" aria-label="Menu principal">
+        {SECTIONS.map(([id, label]) => (
+          <a key={id} href={`#${id}`} className={active === id ? 'active' : ''}>{label}</a>
+        ))}
+      </nav>
+      <div className="sidebar-foot">
+        {socials.length > 0 && (
+          <div className="sidebar-socials">
+            {socials.map(({ key, label, icon: I }) => (
+              <a key={key} href={s[key]} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}><I width="18" height="18" /></a>
+            ))}
+          </div>
+        )}
+        <span>© {new Date().getFullYear()} {s.name}</span>
+      </div>
+    </aside>
+  )
+}
+
 export default function PublicSite() {
   const { data, error } = useSiteData({ refetchOnFocus: true })
 
@@ -112,25 +151,31 @@ export default function PublicSite() {
 
   const s = data.settings
   return (
-    <>
-      <Header settings={s} />
-      <main>
-        <div className="wrap intro">
-          {s.role && <p className="eyebrow">{s.role}</p>}
-          {s.tagline && <h1 className="tagline">{s.tagline}</h1>}
+    <div className="layout">
+      <Sidebar s={s} />
+      <div className="layout-content">
+        {/* No celular, o topo continua horizontal */}
+        <div className="mobile-only">
+          <Header settings={s} />
+          <div className="wrap intro">
+            {s.role && <p className="eyebrow">{s.role}</p>}
+            {s.tagline && <p className="tagline">{s.tagline}</p>}
+          </div>
         </div>
-        <div className="wrap">
-          <Gallery photos={data.photos} categories={data.categories} />
-        </div>
-        <About s={s} />
-        <Contact s={s} />
-      </main>
-      <footer className="site-footer">
-        <div className="wrap footer-inner">
-          <span>© {new Date().getFullYear()} {s.name}</span>
-          <a href="#portfolio">Voltar ao topo ↑</a>
-        </div>
-      </footer>
-    </>
+        <main>
+          <div className="wrap gallery-wrap">
+            <Gallery photos={data.photos} categories={data.categories} />
+          </div>
+          <About s={s} />
+          <Contact s={s} />
+        </main>
+        <footer className="site-footer">
+          <div className="wrap footer-inner">
+            <span>© {new Date().getFullYear()} {s.name}</span>
+            <a href="#portfolio">Voltar ao topo ↑</a>
+          </div>
+        </footer>
+      </div>
+    </div>
   )
 }

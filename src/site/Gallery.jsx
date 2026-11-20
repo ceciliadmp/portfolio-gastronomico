@@ -5,7 +5,7 @@ import Lightbox from './Lightbox'
 function useColumns() {
   const calc = () => {
     const w = window.innerWidth
-    return w < 700 ? 2 : w < 1500 ? 3 : 4
+    return w < 700 ? 2 : w < 1800 ? 3 : 4
   }
   const [n, setN] = useState(calc)
   useEffect(() => {
