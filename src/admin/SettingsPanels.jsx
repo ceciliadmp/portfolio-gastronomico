@@ -101,6 +101,20 @@ export function AboutPanel({ data, setData }) {
     setUploading(false)
   }
 
+  const removePhoto = async () => {
+    if (!confirm('Remover a foto do “Sobre mim”? O texto passa a ocupar a seção inteira.')) return
+    setUploading(true)
+    try {
+      await api.removeAboutPhoto(data.settings.about_photo_path)
+      const s = await api.updateSettings({ about_photo_url: null, about_photo_path: null })
+      setData((d) => ({ ...d, settings: { ...d.settings, ...s } }))
+      toast('Foto removida. O “Sobre mim” agora aparece sem foto.')
+    } catch (err) { toast(errMsg(err), 'error') }
+    setUploading(false)
+  }
+
+  const hasPhoto = !!data.settings.about_photo_url
+
   return (
     <form className="panel" onSubmit={save}>
       <div className="panel-head">
@@ -108,14 +122,21 @@ export function AboutPanel({ data, setData }) {
         <p className="muted">Sua foto, sua história e sua trajetória.</p>
       </div>
       <div className="card about-photo-edit">
-        <div className="avatar">{data.settings.about_photo_url ? <img src={data.settings.about_photo_url} alt="" /> : <Icon.user />}</div>
+        <div className="avatar">{hasPhoto ? <img src={data.settings.about_photo_url} alt="" /> : <Icon.user />}</div>
         <div>
           <strong>Foto de perfil</strong>
-          <p className="muted small">Vertical fica mais bonita (proporção 4:5).</p>
+          <p className="muted small">
+            {hasPhoto ? 'Vertical fica mais bonita (proporção 4:5).' : 'Sem foto: o texto ocupa a seção inteira. Adicione uma quando quiser.'}
+          </p>
           <input ref={input} type="file" accept="image/*" hidden onChange={(e) => { changePhoto(e.target.files[0]); e.target.value = '' }} />
           <button type="button" className="btn" onClick={() => input.current.click()} disabled={uploading}>
-            {uploading ? 'Enviando…' : 'Trocar foto'}
+            {uploading ? 'Aguarde…' : hasPhoto ? 'Trocar foto' : 'Adicionar foto'}
           </button>
+          {hasPhoto && (
+            <button type="button" className="btn btn-danger-ghost" onClick={removePhoto} disabled={uploading}>
+              <Icon.trash width="16" /> Remover foto
+            </button>
+          )}
         </div>
       </div>
       <div className="card form">

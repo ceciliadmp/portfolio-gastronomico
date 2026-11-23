@@ -35,7 +35,7 @@ function About({ s }) {
   const specs = lines(s.specialties)
   return (
     <section id="sobre" className="about">
-      <div className="wrap about-grid">
+      <div className={`wrap about-grid${s.about_photo_url ? '' : ' no-photo'}`}>
         {s.about_photo_url && (
           <div className="about-photo reveal" ref={reveal}>
             <img src={s.about_photo_url} alt={s.name} loading="lazy" decoding="async" />

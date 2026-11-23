@@ -90,6 +90,10 @@ export const api = {
     return { about_photo_url: up.url, about_photo_path: up.path }
   },
 
+  async removeAboutPhoto(path) {
+    if (!isDemo && path) await removeFiles([path])
+  },
+
   /* Fotos */
   async addPhoto(file, meta = {}) {
     const img = await processImage(file)

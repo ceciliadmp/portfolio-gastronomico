@@ -183,6 +183,9 @@ html.site-dark .contact { border-top: 1px solid var(--line); }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 @media (hover: hover) { .about-photo:hover img { transform: scale(1.03); } }
 .about-text { max-width: 620px; }
+/* Sem foto: texto em uma coluna, alinhado à esquerda */
+@media (min-width: 900px) { .about-grid.no-photo { grid-template-columns: minmax(0, 1fr); } }
+.about-grid.no-photo .about-text { max-width: 760px; }
 .prose { font-size: 17px; color: var(--ink-2); font-weight: 400; }
 .prose p { margin: 0 0 1.1em; }
 .prose strong, .prose b { color: var(--ink); font-weight: 700; }
@@ -339,6 +342,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--a
 
 .about-photo-edit { display: flex; gap: 18px; align-items: center; }
 .about-photo-edit p { margin: 2px 0 10px; }
+.about-photo-edit .btn-danger-ghost { margin-left: 6px; }
 .avatar { width: 96px; height: 120px; flex: none; border-radius: 10px; overflow: hidden; background: #ECE7E0; display: grid; place-items: center; color: var(--muted); }
 .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
